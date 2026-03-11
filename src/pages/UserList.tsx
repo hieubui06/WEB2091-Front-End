@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Table, Tag, Button, Space, Avatar } from "antd";
 
 const UserList = () => {
     const columns = [
@@ -8,19 +8,40 @@ const UserList = () => {
             key: "id",
         },
         {
+            title: "Avatar",
+            dataIndex: "avatar",
+            key: "avatar",
+            render: (avatar: string) => <Avatar src={avatar} />,
+        },
+        {
             title: "Name",
             dataIndex: "name",
             key: "name",
         },
         {
-            title: "Age",
-            dataIndex: "age",
-            key: "age",
+            title: "Email",
+            dataIndex: "email",
+            key: "email",
         },
         {
-            title: "Major",
-            dataIndex: "major",
-            key: "major",
+            title: "Status",
+            dataIndex: "status",
+            key: "status",
+            render: (status: string) => (
+                <Tag color={status === "active" ? "green" : "red"}>
+                    {status.toUpperCase()}
+                </Tag>
+            ),
+        },
+        {
+            title: "Action",
+            key: "action",
+            render: () => (
+                <Space>
+                    <Button type="primary">Edit</Button>
+                    <Button danger>Delete</Button>
+                </Space>
+            ),
         },
     ];
 
@@ -28,43 +49,32 @@ const UserList = () => {
         {
             key: 1,
             id: 1,
+            avatar: "https://i.pravatar.cc/40?img=1",
             name: "Nguyen Van A",
-            age: 20,
-            major: "Information Technology",
+            email: "a@gmail.com",
+            status: "active",
         },
         {
             key: 2,
             id: 2,
+            avatar: "https://i.pravatar.cc/40?img=2",
             name: "Tran Thi B",
-            age: 21,
-            major: "Business",
+            email: "b@gmail.com",
+            status: "inactive",
         },
         {
             key: 3,
             id: 3,
+            avatar: "https://i.pravatar.cc/40?img=3",
             name: "Le Van C",
-            age: 19,
-            major: "Design",
-        },
-        {
-            key: 4,
-            id: 4,
-            name: "Le Van D",
-            age: 15,
-            major: "Design",
-        },
-        {
-            key: 5,
-            id: 5,
-            name: "Le Van C",
-            age: 17,
-            major: "Design",
+            email: "c@gmail.com",
+            status: "active",
         },
     ];
 
     return (
         <div>
-            <h2 style={{ marginBottom: 20 }}>User List</h2>
+            <h2 style={{ marginBottom: 20 }}>User Management</h2>
             <Table columns={columns} dataSource={dataSource} />
         </div>
     );
