@@ -1,4 +1,4 @@
-import { Table, Tag, Button, Space, Avatar } from "antd";
+import { Table, Tag, Button, Space, Image } from "antd";
 
 const UserList = () => {
     const columns = [
@@ -11,7 +11,7 @@ const UserList = () => {
             title: "Avatar",
             dataIndex: "avatar",
             key: "avatar",
-            render: (avatar: string) => <Avatar src={avatar} />,
+            render: (avatar: string) => <Image src={avatar} />,
         },
         {
             title: "Name",
@@ -75,7 +75,16 @@ const UserList = () => {
     return (
         <div>
             <h2 style={{ marginBottom: 20 }}>User Management</h2>
-            <Table columns={columns} dataSource={dataSource} />
+
+            <Table
+                columns={columns}
+                dataSource={dataSource}
+                pagination={{
+                    pageSize: 5,
+                    showSizeChanger: false,
+                    showTotal: (total) => `Total ${total} users`,
+                }}
+            />
         </div>
     );
 };
