@@ -1,9 +1,9 @@
 import { Toaster } from "react-hot-toast";
 import { Link, Routes, Route } from "react-router-dom";
 import { Form, Input, Button, Layout } from "antd";
-import Lab1 from "./pages/Lab1";
 import Register from "./pages/Register";
 import UserList from "./pages/UserList";
+import Lab3 from "./pages/Lab3";
 
 
 const { Header, Content, Footer } = Layout;
@@ -27,7 +27,7 @@ function App() {
             <Link to="/">Trang chủ</Link>
             <Link to="/list">Danh sách</Link>
             <Link to="/add">Thêm mới</Link>
-            <Link to="/Lab1">Lab1</Link>
+            <Link to="/lab3">Lab3</Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-6">
@@ -77,9 +77,7 @@ function App() {
 
           <Route path="/list" element={<UserList />} />
 
-          <Route path="/lab1" element={<Lab1 />} />
-
-
+          <Route path="/lab3" element={<Lab3 />} />
 
         </Routes>
 
