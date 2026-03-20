@@ -4,6 +4,8 @@ import { Form, Input, Button, Layout } from "antd";
 import Register from "./pages/Register";
 import UserList from "./pages/UserList";
 import Lab3 from "./pages/Lab3";
+import Lab4 from "./pages/Lab4";
+import Lab5 from "./pages/Lab5";
 
 
 const { Header, Content, Footer } = Layout;
@@ -28,6 +30,8 @@ function App() {
             <Link to="/list">Danh sách</Link>
             <Link to="/add">Thêm mới</Link>
             <Link to="/lab3">Lab3</Link>
+            <Link to="/lab4">Lab4</Link>
+            <Link to="/lab5">Lab5</Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-6">
@@ -78,6 +82,10 @@ function App() {
           <Route path="/list" element={<UserList />} />
 
           <Route path="/lab3" element={<Lab3 />} />
+
+          <Route path="/lab4" element={<Lab4 />} />
+
+          <Route path="/lab5" element={<Lab5 />} />
 
         </Routes>
 

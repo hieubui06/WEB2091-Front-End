@@ -85,4 +85,4 @@ const Lab3: React.FC = () => (
     </div>
 )
 
-export default Lab3
+export default Lab3 
