@@ -90,7 +90,7 @@ function StoryForm() {
 
         mutationFn: async (values: Story) => {
 
-            const dataToSubmit = { ...values, createdAt: new Date().toISOString() };
+            const dataToSubmit = { ...values, createdAt: values.createdAt || new Date().toISOString() };
             const res = await axios.post("http://localhost:3000/stories", dataToSubmit);
             return res.data;
         },
@@ -116,6 +116,9 @@ function StoryForm() {
                 <Form.Item label="Title" name="title">
                     <Input />
                 </Form.Item>
+                <Form.Item label="Created At" name="createdAt">
+                    <Input type="date" />
+                </Form.Item>
                 <Form.Item label="Author" name="author">
                     <Input />
                 </Form.Item>
@@ -139,6 +142,7 @@ function StoryForm() {
                 <Form.Item label="Description" name="description">
                     <Input.TextArea />
                 </Form.Item>
+                
 
 
                 <Button htmlType="submit" loading={isPending} type="primary">

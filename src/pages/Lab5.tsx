@@ -3,6 +3,7 @@ import { Button, Image, Input, Space, Table } from "antd";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 export default function Lab5() {
     const queryClient = useQueryClient();
@@ -46,25 +47,32 @@ export default function Lab5() {
         {
             title: 'Hình ảnh',
             dataIndex: 'image',
-            render: (src: string) => <Image src={src} height={100} />,
+            render: (src: string) => <Image src={src} width={100} height={100} style={{ objectFit: 'cover', borderRadius: 8 }} />,
         },
 
         {
             title: 'Action',
             key: 'action',
             render: (_: any, record: any) => (
-                <Button
-                    danger
-                    type="primary"
-                    loading={deleteMutation.isPending && deleteMutation.variables === record.id}
-                    onClick={() => {
-                        if (window.confirm("Bạn có chắc chắn muốn xoá truyện này không?")) {
-                            deleteMutation.mutate(record.id);
-                        }
-                    }}
-                >
-                    Xóa
-                </Button>
+                <Space>
+                    <Link to={`/lab6?id=${record.id}`}>
+                        <Button type="primary" style={{ backgroundColor: '#faad14' }}>
+                            Sửa
+                        </Button>
+                    </Link>
+                    <Button
+                        danger
+                        type="primary"
+                        loading={deleteMutation.isPending && deleteMutation.variables === record.id}
+                        onClick={() => {
+                            if (window.confirm("Bạn có chắc chắn muốn xoá truyện này không?")) {
+                                deleteMutation.mutate(record.id);
+                            }
+                        }}
+                    >
+                        Xóa
+                    </Button>
+                </Space>
             )
         }
     ];
