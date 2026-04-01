@@ -46,13 +46,16 @@ export default function Navbar() {
                             </Button>
                         </>
                     ) : (
-                        <div className="flex items-center space-x-2">
-                            <Link to="/login">
-                                <Button type="primary">Đăng nhập</Button>
-                            </Link>
-                            <Link to="/register">
-                                <Button>Đăng ký</Button>
-                            </Link>
+                        <div className="flex items-center space-x-4">
+                            <span className="text-sm font-medium text-gray-200">Chưa đăng nhập</span>
+                            <div className="flex items-center space-x-2">
+                                <Link to="/login">
+                                    <Button type="primary">Đăng nhập</Button>
+                                </Link>
+                                <Link to="/register">
+                                    <Button>Đăng ký</Button>
+                                </Link>
+                            </div>
                         </div>
                     )}
                 </div>
