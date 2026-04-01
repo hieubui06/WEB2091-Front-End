@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
-import { useContext } from "react";
+// import { UserContext } from "../context/UserContext";
+// import { useContext } from "react";
 import { Button } from "antd";
+import { useAuthStore } from "../stores/useAuthStore";
 
 export default function Navbar() {
-    const context = useContext(UserContext);
+    // const context = useContext(UserContext);
 
-    if (!context) return null;
-    const { user, setUser } = context;
+    // if (!context) return null;
+    // const { user, setUser } = context;
+
+
+    const { user, setUser } = useAuthStore();
+
+
 
     return (
         <nav className="bg-blue-600 text-white shadow">
@@ -32,20 +38,22 @@ export default function Navbar() {
                     {user ? (
                         <>
                             <div className="flex items-center space-x-2">
-                                <img src={user.avatar} alt="avatar" className="w-8 h-8 rounded-full" />
-                                <span>{user.name}</span>
+                                <span className="text-sm font-medium">Đã đăng nhập:</span>
+                                <span className="text-yellow-300 font-semibold">{user.email}</span>
                             </div>
                             <Button onClick={() => setUser(null)} type="primary" danger>
                                 Đăng xuất
                             </Button>
                         </>
                     ) : (
-                        <Button 
-                            onClick={() => setUser({ name: "Hieu Bui", avatar: "https://i.pravatar.cc/150?u=hieu" })}
-                            type="primary"
-                        >
-                            Đăng nhập giả lập
-                        </Button>
+                        <div className="flex items-center space-x-2">
+                            <Link to="/login">
+                                <Button type="primary">Đăng nhập</Button>
+                            </Link>
+                            <Link to="/register">
+                                <Button>Đăng ký</Button>
+                            </Link>
+                        </div>
                     )}
                 </div>
             </div>

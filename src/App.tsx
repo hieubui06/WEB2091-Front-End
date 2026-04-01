@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import AddPage from "./pages/AddPage";
 import EditPage from "./pages/EditPage";
 import ListPage from "./pages/ListPage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Navbar from "./components/Header";
 import { Layout } from "antd";
 
@@ -26,6 +28,8 @@ function App() {
               <Route path="/list" element={<ListPage />} />
               <Route path="/add" element={<AddPage />} />
               <Route path="/edit/:id" element={<EditPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
             </Routes>
           </Content>
         </Layout>
