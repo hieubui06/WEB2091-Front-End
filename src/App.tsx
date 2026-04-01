@@ -1,0 +1,39 @@
+import { Toaster } from "react-hot-toast";
+import { Routes, Route } from "react-router-dom";
+import AddPage from "./pages/AddPage";
+import EditPage from "./pages/EditPage";
+import ListPage from "./pages/ListPage";
+import Navbar from "./components/Header";
+import { Layout } from "antd";
+
+const { Content } = Layout;
+
+function App() {
+  return (
+    <>
+      <Navbar />
+
+      <div className="max-w-6xl mx-auto mt-10 px-4">
+        <h1 className="text-4xl font-bold mb-6 text-center">
+          Chào mừng đến với WEB2091
+        </h1>
+
+        <Layout>
+          <Content style={{ padding: 20 }}>
+            <Routes>
+              <Route path="/" element={<h2>Trang chủ</h2>} />
+
+              <Route path="/list" element={<ListPage />} />
+              <Route path="/add" element={<AddPage />} />
+              <Route path="/edit/:id" element={<EditPage />} />
+            </Routes>
+          </Content>
+        </Layout>
+      </div>
+
+      <Toaster />
+    </>
+  );
+}
+
+export default App;
